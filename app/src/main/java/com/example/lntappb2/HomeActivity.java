@@ -21,9 +21,11 @@ public class HomeActivity extends AppCompatActivity {
         //from the intent get the extras
         Bundle extras = intent.getExtras();
         //from extras get the string with the key = mykey
+        if(extras!= null){
         String data = extras.getString("mykey");
         //put the string extraCTED into a textview
         TextView resultTextView = findViewById(R.id.textViewResult);
         resultTextView.setText(data);
+        }
     }
 }
