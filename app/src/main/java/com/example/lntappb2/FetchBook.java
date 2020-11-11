@@ -19,11 +19,11 @@ protected String doInBackground(String... params) {
     return NetworkUtils.getBookInfo(params[0]);
 }
 @Override
-protected void onPostExecute(String s)
+protected void onPostExecute(String jsonString)
 {
-super.onPostExecute(s);
+super.onPostExecute(jsonString);
     try {
-        JSONObject jsonObject = new JSONObject(s);
+        JSONObject jsonObject = new JSONObject(jsonString);
         JSONArray itemsArray = jsonObject.getJSONArray("items");
         //Iterate through the results
         for(int i = 0; i<itemsArray.length(); i++){
