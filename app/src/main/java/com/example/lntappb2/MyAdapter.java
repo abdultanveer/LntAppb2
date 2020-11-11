@@ -18,7 +18,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.WordViewHolder> {
 
     public MyAdapter(Context context, String[] languagesData) {
         languages = languagesData;
-        LayoutInflater.from(context);
+       layoutInflater = LayoutInflater.from(context);
     }
 
     /**
