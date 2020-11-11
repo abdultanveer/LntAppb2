@@ -2,6 +2,7 @@ package com.example.lntappb2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,5 +34,19 @@ public class AsyncActivity extends AppCompatActivity {
         String queryString = mBookInput.getText().toString();
 
         new FetchBook(mTitleText, mAuthorText).execute(queryString);
+    }
+
+    public void serviceHandler(View view) {
+        Intent serviceIntent = new Intent(AsyncActivity.this,MusicService.class);
+        switch (view.getId()){
+            case R.id.buttonstart:
+                //start a service/music
+                startService(serviceIntent);
+                break;
+            case R.id.buttonstop:
+                //stop a service/music
+                stopService(serviceIntent);
+                break;
+        }
     }
 }
