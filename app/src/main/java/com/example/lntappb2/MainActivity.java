@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.lntappb2.database.DbAccessObj;
 
@@ -130,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.buttonget:
+                //get the data from db
+               String data =  dbAccessObj.readRow();
+                //set the data onto textview
+                TextView dbTextView = findViewById(R.id.textViewdb);
+                dbTextView.setText(data);
                 break;
         }
     }
