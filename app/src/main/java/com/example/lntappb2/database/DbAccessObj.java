@@ -11,7 +11,7 @@ public class DbAccessObj {
     private void openDb(){}
     private void closeDb(){}
 
-    private void createRow(){}
+    public void createRow(String title, String subtitle){}
     private void readRow(){}
     private void updateRow(){}
     private void deleteRow(){}

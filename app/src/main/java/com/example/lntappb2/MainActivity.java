@@ -10,12 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.lntappb2.database.DbAccessObj;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName() ;
     public static final String MYPREFS = "myprefs";
     public static final String NAMEKEY = "namekey";
     public static final String PWDKEY = "pwdkey";
+
+    DbAccessObj dbAccessObj;
     EditText nameEditText,pwdEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"onCreate");
         nameEditText =  findViewById(R.id.editTextName);
         pwdEditText = findViewById(R.id.editTextPwd);
+
+        dbAccessObj = new DbAccessObj();
     }
 
     @Override
@@ -116,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
     public void handleDb(View view) {
         switch (view.getId()){
             case R.id.buttonput:
+                String title = nameEditText.getText().toString();
+                String subtitle = pwdEditText.getText().toString();
+
+                dbAccessObj.createRow(title,subtitle);
+
                 break;
             case R.id.buttonget:
                 break;
