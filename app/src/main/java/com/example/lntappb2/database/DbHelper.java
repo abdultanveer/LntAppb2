@@ -24,7 +24,11 @@ public class DbHelper  extends SQLiteOpenHelper {
     private static final String TAG = DbHelper.class.getSimpleName() ;
 
     public DbHelper(@Nullable Context context) {
+
         super(context, "notesdb", null, 1);
+        Log.i(TAG,"db created");
+
+
     }
 
     /**
@@ -33,7 +37,7 @@ public class DbHelper  extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i(TAG,"onCreate");
+        Log.i(TAG,"onCreate table");
         //create table tablename(id integer primary key not null, title VARCHAR notnull, subtitle varchar notnull);
         db.execSQL(SQL_CREATE_ENTRIES);
     }

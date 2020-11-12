@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         nameEditText =  findViewById(R.id.editTextName);
         pwdEditText = findViewById(R.id.editTextPwd);
 
-        dbAccessObj = new DbAccessObj();
+        dbAccessObj = new DbAccessObj(this);
+        dbAccessObj.openDb();
     }
 
     @Override
