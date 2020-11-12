@@ -1,0 +1,19 @@
+package com.example.lntappb2.database;
+
+/**
+ * thjis class will help me create/read/update/delete a row in the table
+ */
+public class DbAccessObj {
+
+    public DbAccessObj() {
+    }
+
+    private void openDb(){}
+    private void closeDb(){}
+
+    private void createRow(){}
+    private void readRow(){}
+    private void updateRow(){}
+    private void deleteRow(){}
+
+}
