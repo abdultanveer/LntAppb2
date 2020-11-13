@@ -17,7 +17,9 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.lntappb2.database.DbAccessObj;
-import com.example.lntappb2.database.FeedReaderContract.FeedEntry;
+import com.example.lntappb2.observerdesignpattern.FcmServer;
+import com.example.lntappb2.observerdesignpattern.SamsungMob;
+import com.example.lntappb2.observerdesignpattern.MobilePhone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -125,13 +127,41 @@ public class MainActivity extends AppCompatActivity {
                 getCredentials();
                 break;
             case R.id.buttoncancel:
-                Intent dialIntent =new Intent(Intent.ACTION_VIEW,  Uri.parse("tel:12345678" ));
+                testObserverDesignpattern();
+               /* Intent dialIntent =new Intent(Intent.ACTION_VIEW,  Uri.parse("tel:12345678" ));
                         //"//http://www.google.com"));
                         //new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1234567"));
-                startActivity(dialIntent);
+                startActivity(dialIntent);*/
                 break;
         }
     }
+
+    private void testObserverDesignpattern() {
+        FcmServer fcmServer = new FcmServer();
+
+        //create observers
+        MobilePhone mob1 = new SamsungMob("mob1");
+        MobilePhone mob2 = new SamsungMob("mob2");
+        MobilePhone mob3 = new SamsungMob("mob3");
+
+        //register observers to the subject
+        fcmServer.register(mob1);
+        fcmServer.register(mob2);
+        fcmServer.register(mob3);
+
+        //attach observer to subject
+        mob1.setSubject(fcmServer);
+        mob2.setSubject(fcmServer);
+        mob3.setSubject(fcmServer);
+
+        //check if any update is available
+        mob1.update();
+
+        //now send message to subject
+        fcmServer.postMessage("New Message");
+    }
+
+
 
     private void getCredentials() {
         dbAccessObj.query(nameEditText.getText().toString());
